@@ -138,13 +138,58 @@
   .close-mark { font-size: 10.5px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 32px; }
   .close-lines p { font-style: italic; font-size: 20px; line-height: 1.7; max-width: 560px; margin: 0 auto 24px; }
   .footer { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--rule-soft); display: flex; justify-content: space-between; gap: 16px; font-size: 10.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink-3); }
+
+  /* VISION CARD */
+  .page { padding-top: 40px; }
+  .vcard { min-height: calc(100vh - 40px); min-height: calc(100svh - 40px); display: flex; flex-direction: column; justify-content: center; gap: 18px; padding: 0 0 32px; border-bottom: 1px solid var(--rule); margin-bottom: 72px; }
+  .vc-top { display: flex; justify-content: space-between; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+  .vc-mantra { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 700; font-size: clamp(30px, 6.4vw, 54px); line-height: 0.98; letter-spacing: -0.03em; }
+  .vc-mantra span { display: block; }
+  .vc-board { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+  .vc-board figure { position: relative; margin: 0; aspect-ratio: 4 / 5; overflow: hidden; background: var(--paper-edge); }
+  .vc-board img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .vc-board figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 8px 7px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 9px; letter-spacing: 0.24em; text-transform: uppercase; color: #F6F2E9; background: linear-gradient(transparent, rgba(0,0,0,0.55)); }
+  @media (max-width: 720px) {
+    .vc-board { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 8px; margin: 0 -20px; padding: 0 20px; scrollbar-width: none; }
+    .vc-board::-webkit-scrollbar { display: none; }
+    .vc-board figure { flex: 0 0 40vw; scroll-snap-align: start; }
+  }
+  .vc-identity { font-style: italic; font-size: clamp(17px, 2.2vw, 20px); line-height: 1.5; color: var(--ink); max-width: 640px; }
+  .vc-stats { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--rule-soft); }
+  .vc-stats div { padding: 14px 12px 0 0; }
+  .vc-stats .n { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 700; font-size: clamp(20px, 3vw, 26px); letter-spacing: -0.02em; display: block; line-height: 1.1; }
+  .vc-stats p { font-size: 13px; line-height: 1.4; color: var(--ink-2); margin: 4px 0 0; }
+  .vc-down { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink-3); text-decoration: none; }
 </style>
 </head>
 <body>
 <div class="page">
 
+  <!-- VISION CARD -->
+  <section class="vcard" id="vision-card">
+    <div class="vc-top">
+      <div class="micro">Vision Card · Easwar H</div>
+      <div class="micro" id="vc-today">Read aloud · 30 seconds</div>
+    </div>
+    <div class="vc-mantra"><span>Deal first.</span><span>Debt free.</span><span>Disciplined.</span></div>
+    <div class="vc-board">
+      <figure><img src="easwar_vision-board-01-space.jpg" alt="Easwar at his desk by a window over Chennai rooftops at sunrise"><figcaption>Space</figcaption></figure>
+      <figure><img src="easwar_vision-board-02-people.jpg" alt="Easwar talking with founders at a Chennai café in the evening"><figcaption>People</figcaption></figure>
+      <figure><img src="easwar_vision-board-03-business.jpg" alt="Easwar presenting an AI dashboard in his agency studio"><figcaption>Business</figcaption></figure>
+      <figure><img src="easwar_vision-board-04-trips.jpg" alt="Easwar with a backpack on a mountain ridge at golden hour"><figcaption>Trips</figcaption></figure>
+      <figure><img src="easwar_vision-board-05-future-self.jpg" alt="Easwar in a gym at sunrise after training, lean with defined abs"><figcaption>Future self</figcaption></figure>
+    </div>
+    <p class="vc-identity">I am the type of person who closes the deal before doing the work, clears what he owes before buying what he wants, and never negotiates with his mornings.</p>
+    <div class="vc-stats">
+      <div><span class="micro">PIP clears in</span><span class="n" id="vc-pip">Dec 2026</span><p>Quiet calls. Zero reopened tasks.</p></div>
+      <div><span class="micro">Debt-free in</span><span class="n" id="vc-debt">Oct 2027</span><p>₹12,56,285 to zero. No new EMIs.</p></div>
+      <div><span class="micro">The agency</span><span class="n">₹10L / mo</span><p>Oct 2029. Mom retired.</p></div>
+    </div>
+    <a class="vc-down" href="#kit">↓ The full kit</a>
+  </section>
+
   <!-- COVER -->
-  <section class="cover">
+  <section class="cover" id="kit">
     <div class="header-line">
       <div class="micro">Easwar's Upleveling · Volume I</div>
       <div class="micro">October 2026</div>
@@ -512,7 +557,7 @@
       <div class="pipe-row"><p><strong>The Excavation.</strong> Worksheets 1, 2, 3 → photograph → transcribe → Pattern Extractor → <code>easwar_pattern-extraction.md</code></p><span class="status">Done</span></div>
       <div class="pipe-row"><p><strong>The Direction.</strong> Worksheets 4, 5 → transcribe → Vision Sharpener → Vision Sentence, Identity Sentence, 5-word mantra → <code>easwar_vision-sentence.md</code></p><span class="status">Done</span></div>
       <div class="pipe-row"><p><strong>Worksheet 6.</strong> Environment audit applied directly. Not processed through AI. Done by Sunday 25 October.</p><span class="status next">This week</span></div>
-      <div class="pipe-row"><p><strong>Freedom Math.</strong> Conversational Q&amp;A → lighthouse number with a WHY for every line, about ₹3.7L a month → <code>easwar_freedom-math.csv</code></p><span class="status">Done</span></div>
+      <div class="pipe-row"><p><strong>Freedom Math.</strong> Conversational Q&amp;A → lighthouse number with a WHY for every line, about ₹4.2L a month → <code>easwar_freedom-math.csv</code></p><span class="status">Done</span></div>
       <div class="pipe-row"><p><strong>Quit-Your-Job Math.</strong> Do I actually need the job, and how do I make it sustainable while I build → exit floor of ₹2L a month and five conditions → <code>easwar_quit-job-math.csv</code></p><span class="status">Done</span></div>
       <div class="pipe-row"><p><strong>Vision Card v1.</strong> All outputs → HTML → deployed to Vercel → <code>easwar_vision-card-url.txt</code></p><span class="status">Live</span></div>
       <div class="pipe-row"><p><strong>Vision Board.</strong> Vision Sentence + Vision Map → 5 image prompts → generate in Higgsfield → <code>easwar_vision-board-0N-[type].jpg</code> → Vision Card v2 with images</p><span class="status next">Next</span></div>
@@ -583,5 +628,15 @@
   </div>
 
 </div>
+<script>
+  (function () {
+    var now = new Date();
+    function days(to) { return Math.ceil((to - now) / 86400000); }
+    var pip = days(new Date(2026, 11, 31)), debt = days(new Date(2027, 9, 31));
+    if (pip > 0) document.getElementById('vc-pip').textContent = pip + ' days';
+    if (debt > 0) document.getElementById('vc-debt').textContent = debt + ' days';
+    document.getElementById('vc-today').textContent = now.toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'short' });
+  })();
+</script>
 </body>
 </html>
