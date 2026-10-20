@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>Easwar · The Foundation</title>
+<title>Practice Kit · The Foundation · Easwar</title>
 <style>
   :root {
     --paper: #F6F2E9; --paper-edge: #EFEADD;
@@ -14,101 +14,130 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   html, body { background: var(--paper); color: var(--ink); -webkit-font-smoothing: antialiased; }
-  body { font-family: Georgia, 'Times New Roman', serif; font-size: 17px; line-height: 1.72; position: relative; }
+  body { font-family: Georgia, 'Times New Roman', serif; font-size: 17px; line-height: 1.72; position: relative;
+    background: radial-gradient(ellipse at top, rgba(0,0,0,0.012), transparent 60%), var(--paper); background-attachment: fixed; }
   body::before {
     content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.5;
     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.08 0 0 0 0 0.08 0 0 0 0 0.08 0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
   }
-  .sans { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
   .page { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; padding: 96px 64px 140px; }
   @media (max-width: 720px) { .page { padding: 56px 20px 96px; } body { font-size: 16.5px; line-height: 1.7; } }
-  .micro { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 9.5px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; }
+  .sans, .micro, .col-label, .ex-tag, .row-key, .ws-num, .ws-label, .ws-title, .section-title, .i-label, .notebook-cue, .a-label, .appendix h2, .footer, .close-mark, .big, .ms-date, .ms-head, .daily h4, .status { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+  .micro { font-size: 9.5px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; }
   p { margin-bottom: 20px; } p:last-child { margin-bottom: 0; }
   strong { font-weight: bold; } em { font-style: italic; }
+  code { font-family: 'Courier New', monospace; font-size: 13px; background: rgba(20,20,20,0.06); padding: 2px 6px; word-break: break-word; }
 
+  /* COVER */
   .cover { padding-top: 24px; padding-bottom: 96px; border-bottom: 1px solid var(--rule); }
   .header-line { display: flex; justify-content: space-between; gap: 16px; padding-bottom: 32px; border-bottom: 1px solid var(--rule); margin-bottom: 80px; }
   .cover h1 { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 700; font-size: clamp(48px, 8vw, 84px); line-height: 0.92; letter-spacing: -0.035em; margin-bottom: 24px; }
-  .cover h1 .quiet { display: block; font-weight: 200; color: var(--ink-2); font-size: 0.5em; letter-spacing: -0.02em; margin-top: 14px; line-height: 1.05; }
+  .cover h1 .quiet { display: block; font-weight: 200; color: var(--ink-2); font-size: 0.42em; letter-spacing: -0.02em; margin-top: 16px; line-height: 1.15; }
   .lede { font-style: italic; font-size: 19px; color: var(--ink-2); line-height: 1.6; max-width: 580px; margin: 56px 0 64px; }
   .meta-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; padding-top: 32px; border-top: 1px solid var(--rule-soft); }
+  .meta-grid + .meta-grid { margin-top: 40px; }
   @media (max-width: 560px) { .meta-grid { grid-template-columns: 1fr; gap: 20px; } }
-  .meta-grid span { display: block; margin-bottom: 8px; }
+  .meta-grid span.micro { display: block; margin-bottom: 8px; }
   .meta-grid p { font-size: 15px; line-height: 1.5; margin: 0; }
-  .meta-grid .big { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 700; font-size: 22px; letter-spacing: -0.01em; display: block; margin-bottom: 6px; }
-
-  .toc { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 56px; border-top: 1px solid var(--rule-soft); }
+  .big { font-weight: 700; font-size: 22px; letter-spacing: -0.01em; display: block; margin-bottom: 6px; }
+  .toc { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 56px; border-top: 1px solid var(--rule-soft); }
   @media (max-width: 560px) { .toc { grid-template-columns: 1fr 1fr; } }
   .toc a { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; color: var(--ink-2); padding: 14px 0; border-bottom: 1px solid var(--rule-soft); }
   .toc a b { color: var(--ink); margin-right: 8px; }
 
-  section.section { padding: 96px 0; border-bottom: 1px solid var(--rule); }
-  .section-title { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 700; font-size: 32px; letter-spacing: -0.01em; margin-bottom: 32px; line-height: 1.1; }
-  .ws-head { display: grid; grid-template-columns: 80px 1fr; gap: 28px; align-items: baseline; margin-bottom: 40px; padding-bottom: 28px; border-bottom: 1px solid var(--rule); }
+  /* SECTIONS */
+  section.intro, section.section { padding: 96px 0; border-bottom: 1px solid var(--rule); }
+  .section-eyebrow { margin-bottom: 16px; }
+  .section-title { font-weight: 700; font-size: 32px; letter-spacing: -0.01em; margin-bottom: 36px; line-height: 1.1; }
+  .ws-head { display: grid; grid-template-columns: 80px 1fr; gap: 32px; align-items: baseline; margin-bottom: 56px; padding-bottom: 28px; border-bottom: 1px solid var(--rule); }
   @media (max-width: 560px) { .ws-head { grid-template-columns: 56px 1fr; gap: 16px; } }
-  .ws-num { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 200; font-size: 56px; line-height: 1; letter-spacing: -0.04em; }
-  .ws-label { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10.5px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 8px; }
-  .ws-title { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 700; font-size: 30px; letter-spacing: -0.01em; line-height: 1.1; }
+  .ws-num { font-weight: 200; font-size: 56px; line-height: 1; letter-spacing: -0.04em; }
+  .ws-label { font-size: 10.5px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 8px; }
+  .ws-title { font-weight: 700; font-size: 30px; letter-spacing: -0.01em; line-height: 1.1; }
   .ws-purpose { font-style: italic; font-size: 17px; color: var(--ink-2); line-height: 1.6; margin-bottom: 48px; }
 
-  .col-label { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink); font-weight: 700; }
-  .ex-tag { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10px; letter-spacing: 0.28em; color: var(--ink-3); margin-bottom: 6px; display: block; text-transform: uppercase; }
+  .col-label { font-size: 10.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink); font-weight: 700; }
+  .ex-tag { font-size: 10px; letter-spacing: 0.28em; color: var(--ink-3); margin-bottom: 6px; display: block; text-transform: uppercase; }
   .cell { font-size: 15px; line-height: 1.55; }
   .note { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 11px; letter-spacing: 0.08em; color: var(--ink-3); font-style: italic; margin-top: 10px; display: block; }
+  .row-key { font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-2); font-weight: 600; }
 
-  .t3 { border-top: 1px solid var(--rule); margin-bottom: 40px; }
+  /* 3-column table */
+  .t3 { border-top: 1px solid var(--rule); margin-bottom: 48px; }
   .t3 .row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; padding: 24px 0; border-bottom: 1px solid var(--rule-soft); }
   .t3 .row.header { border-bottom: 1px solid var(--rule); }
-  @media (max-width: 720px) { .t3 .row { grid-template-columns: 1fr; gap: 12px; } .t3 .row.header { display: none; } .t3 .row > div::before { content: attr(data-l); display: block; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 9.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 4px; } }
-
-  .t2 { border-top: 1px solid var(--rule); margin-bottom: 40px; }
-  .t2 .row { display: grid; grid-template-columns: 170px 1fr 1fr; gap: 24px; padding: 22px 0; border-bottom: 1px solid var(--rule-soft); }
-  .t2.single .row { grid-template-columns: 170px 1fr; }
+  /* key + 2 columns */
+  .t2 { border-top: 1px solid var(--rule); margin-bottom: 48px; }
+  .t2 .row { display: grid; grid-template-columns: 160px 1fr 1fr; gap: 24px; padding: 22px 0; border-bottom: 1px solid var(--rule-soft); }
   .t2 .row.header { border-bottom: 1px solid var(--rule); }
-  .row-key { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-2); font-weight: 600; }
-  @media (max-width: 720px) { .t2 .row, .t2.single .row { grid-template-columns: 1fr; gap: 8px; } .t2 .row.header { display: none; } .t2 .row > div[data-l]::before { content: attr(data-l); display: block; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 9.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 2px; } }
+  /* key + 3 columns (env) */
+  .t4 { border-top: 1px solid var(--rule); margin-bottom: 48px; }
+  .t4 .row { display: grid; grid-template-columns: 100px 1fr 1fr 1fr; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--rule-soft); }
+  .t4 .row.header { border-bottom: 1px solid var(--rule); }
+  @media (max-width: 720px) {
+    .t3 .row, .t2 .row, .t4 .row { grid-template-columns: 1fr; gap: 10px; padding: 20px 0; }
+    .t3 .row.header, .t2 .row.header, .t4 .row.header { display: none; }
+    [data-l]::before { content: attr(data-l); display: block; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 9.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 3px; }
+  }
 
-  .para-block { border-top: 1px solid var(--rule); margin-bottom: 40px; }
-  .para { padding: 26px 0; border-bottom: 1px solid var(--rule-soft); }
+  .para-block { border-top: 1px solid var(--rule); padding-top: 8px; margin-bottom: 48px; }
+  .para { padding: 24px 0; border-bottom: 1px solid var(--rule-soft); }
   .para:last-child { border-bottom: 1px solid var(--rule); }
   .para p { font-size: 16px; line-height: 1.68; }
   .para .turn { display: block; margin-top: 12px; font-style: italic; color: var(--ink-2); }
 
-  .identity { padding: 36px; border: 1px solid var(--ink); background: rgba(255,255,255,0.4); margin-bottom: 40px; }
-  @media (max-width: 560px) { .identity { padding: 24px; } }
-  .identity p { font-size: 19px; line-height: 1.6; font-style: italic; }
+  .identity { padding: 32px; border: 1px solid var(--ink); background: rgba(255,255,255,0.4); margin-bottom: 40px; }
+  @media (max-width: 560px) { .identity { padding: 22px; } }
+  .identity p { font-size: 18px; line-height: 1.6; font-style: italic; }
 
-  .pull { font-size: 22px; font-style: italic; color: var(--ink-2); line-height: 1.55; text-align: center; margin: 56px auto; max-width: 500px; padding: 0 16px; }
+  .pull { font-size: 22px; font-style: italic; color: var(--ink-2); line-height: 1.55; text-align: center; margin: 56px auto; max-width: 480px; padding: 0 16px; }
 
-  .instruction { margin-top: 40px; padding: 28px; background: rgba(20,20,20,0.04); border-left: 3px solid var(--ink); }
-  .i-label { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10.5px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--ink-3); display: block; margin-bottom: 14px; }
-  .instruction p, .instruction li { font-size: 15px; line-height: 1.6; }
-  .instruction ol, .instruction ul { margin: 8px 0 0 20px; }
-  .instruction li { margin-bottom: 8px; }
+  .instruction { margin-top: 48px; padding: 28px; background: rgba(20,20,20,0.04); border-left: 3px solid var(--ink); }
+  .i-label { font-size: 10.5px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--ink-3); display: block; margin-bottom: 14px; }
+  .instruction p { font-size: 15px; line-height: 1.6; margin-bottom: 12px; }
+  .instruction p:last-child { margin-bottom: 0; }
+  .notebook-cue { display: block; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--rule-soft); font-size: 12px; letter-spacing: 0.06em; color: var(--ink-2); font-style: italic; }
 
-  .loop { margin: 40px 0; padding: 36px 28px; background: var(--ink); color: var(--paper); }
+  .ws-example { margin: 32px auto 0; max-width: 420px; }
+  .ws-example img { width: 100%; display: block; border: 1px solid var(--rule-soft); }
+  .ws-example figcaption { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink-3); margin-top: 16px; text-align: center; }
+
+  .loop { margin: 48px 0 0; padding: 36px 28px; background: var(--ink); color: var(--paper); }
   .loop .i-label { color: var(--ink-4); }
   .loop-chain { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 18px 0 22px; }
   .loop-chain span { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; padding: 8px 12px; border: 1px solid var(--paper-edge); }
   .loop-chain i { color: var(--ink-4); font-style: normal; }
   .loop p { font-size: 15.5px; color: var(--paper-edge); line-height: 1.6; }
 
+  /* PIPELINE */
+  .pipe { border-top: 1px solid var(--rule); margin-top: 32px; }
+  .pipe-row { display: grid; grid-template-columns: 1fr 120px; gap: 20px; padding: 18px 0; border-bottom: 1px solid var(--rule-soft); align-items: baseline; }
+  @media (max-width: 560px) { .pipe-row { grid-template-columns: 1fr; gap: 6px; } }
+  .pipe-row p { font-size: 15px; line-height: 1.6; margin: 0; }
+  .status { font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-2); font-weight: 700; text-align: right; }
+  .status.next { color: var(--ink-3); font-weight: 500; }
+  @media (max-width: 560px) { .status { text-align: left; } }
+
+  /* APPENDIX */
+  .appendix { padding: 96px 0; border-bottom: 1px solid var(--rule); }
+  .appendix-head { margin-bottom: 40px; }
+  .a-label { font-size: 10.5px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 16px; }
+  .appendix h2 { font-weight: 700; font-size: 32px; letter-spacing: -0.01em; margin-bottom: 12px; }
+  .naming-block { background: rgba(20,20,20,0.04); padding: 32px; margin-top: 32px; border: 1px solid var(--rule-soft); }
+  @media (max-width: 560px) { .naming-block { padding: 20px; } }
+  .naming-block code { display: block; font-size: 14px; background: rgba(255,255,255,0.5); padding: 4px 8px; border: 1px solid var(--rule-soft); margin: 8px 0; }
+
   .milestones { border-top: 1px solid var(--rule); }
   .ms { display: grid; grid-template-columns: 150px 1fr; gap: 24px; padding: 22px 0; border-bottom: 1px solid var(--rule-soft); align-items: baseline; }
   @media (max-width: 560px) { .ms { grid-template-columns: 1fr; gap: 6px; } }
-  .ms-date { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 700; font-size: 14px; letter-spacing: 0.04em; }
-  .ms-head { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 700; font-size: 18px; margin-bottom: 4px; }
+  .ms-date { font-weight: 700; font-size: 14px; letter-spacing: 0.04em; }
+  .ms-head { font-weight: 700; font-size: 18px; margin-bottom: 4px; }
   .ms p { font-size: 15px; line-height: 1.55; color: var(--ink-2); }
 
-  .daily { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 32px; }
-  @media (max-width: 560px) { .daily { grid-template-columns: 1fr; } }
-  .daily div { padding: 22px; border: 1px solid var(--rule-soft); }
-  .daily h4 { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 10px; font-weight: 600; }
-  .daily p { font-size: 15px; line-height: 1.55; }
-
-  .close { padding-top: 120px; padding-bottom: 80px; text-align: center; }
+  .close { padding-top: 120px; padding-bottom: 96px; text-align: center; }
+  .close-mark { font-size: 10.5px; letter-spacing: 0.32em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 32px; }
   .close-lines p { font-style: italic; font-size: 20px; line-height: 1.7; max-width: 560px; margin: 0 auto 24px; }
-  .footer { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--rule-soft); display: flex; justify-content: space-between; gap: 16px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink-3); }
+  .footer { margin-top: 64px; padding-top: 32px; border-top: 1px solid var(--rule-soft); display: flex; justify-content: space-between; gap: 16px; font-size: 10.5px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink-3); }
 </style>
 </head>
 <body>
@@ -117,33 +146,50 @@
   <!-- COVER -->
   <section class="cover">
     <div class="header-line">
-      <div class="micro">The Foundation · Personal Kit</div>
-      <div class="micro">Easwar H · October 2026</div>
+      <div class="micro">Easwar's Upleveling · Volume I</div>
+      <div class="micro">October 2026</div>
     </div>
-    <h1>Easwar<span class="quiet">From Fusion and ₹12.5L in debt<br>to his own AI agency</span></h1>
-    <p class="lede">Twenty-five. Three years at the first company that came through placements. On a PIP that ends in December. More than half of every salary already spoken for. None of this is the end of anything. It is the honest starting line, written down so the mind finally has a target to move toward.</p>
+    <h1>The Foundation<span class="quiet">Practice Kit · 6 Worksheets · 7 AI Outputs · 1 Vision Card</span></h1>
+    <p class="lede">I came here to make money with AI. The first step is not AI. It is the operator behind it. Twenty-five, on a PIP, ₹12.5 lakh in debt, and more than half of every salary already spoken for. Identity precedes behaviour. Without a clear target, AI amplifies noise. I do this first so everything else compounds.</p>
     <div class="meta-grid">
-      <div><span class="micro">Starting line · Oct 2026</span><span class="big">₹97,300</span><p>Take-home from Fusion. ₹59,641 (61%) goes to EMIs. ₹12,56,285 still owed.</p></div>
-      <div><span class="micro">One year · Oct 2027</span><span class="big">Debt-free</span><p>Earning ₹3L a month. PIP cleared, consulting income running alongside.</p></div>
-      <div><span class="micro">Three years · Oct 2029</span><span class="big">₹10L / month</span><p>Own AI agency. ₹30L a quarter. Mom retired. Answerable only to clients.</p></div>
+      <div><span class="micro">Privacy</span><p>The handwritten worksheets stay in my notebook. Only the AI outputs live in the project. This page is private. The link is not shared.</p></div>
+      <div><span class="micro">Pace</span><p>The Excavation is Worksheets 1 to 3. The Direction is 4 to 6. The work, not the timer, sets the pace.</p></div>
+      <div><span class="micro">Output</span><p>Seven AI output files. One deployed Vision Card. A daily practice that runs until the agency exists.</p></div>
+    </div>
+    <div class="meta-grid">
+      <div><span class="micro">Now · Oct 2026</span><span class="big">₹97,300</span><p>Take-home from Fusion. ₹59,641 (61%) to EMIs. ₹12,56,285 owed.</p></div>
+      <div><span class="micro">One year · Oct 2027</span><span class="big">Debt-free</span><p>₹3L a month. PIP cleared. Consulting running alongside.</p></div>
+      <div><span class="micro">Three years · Oct 2029</span><span class="big">₹10L / month</span><p>Own AI agency. ₹30L a quarter. Mom retired.</p></div>
     </div>
     <nav class="toc">
-      <a href="#ws1"><b>01</b>Tolerances</a>
-      <a href="#ws2"><b>02</b>Trajectory</a>
-      <a href="#ws3"><b>03</b>Embarrassment</a>
-      <a href="#ws4"><b>04</b>Vision Map</a>
-      <a href="#ws5"><b>05</b>Identity</a>
-      <a href="#ws6"><b>06</b>Environment</a>
+      <a href="#worksheet-1"><b>01</b>Tolerances</a>
+      <a href="#worksheet-2"><b>02</b>Trajectory</a>
+      <a href="#worksheet-3"><b>03</b>Embarrassment</a>
+      <a href="#worksheet-4"><b>04</b>Vision Map</a>
+      <a href="#worksheet-5"><b>05</b>Identity</a>
+      <a href="#worksheet-6"><b>06</b>Environment</a>
+      <a href="#pipeline"><b>→</b>Pipeline</a>
+      <a href="#naming"><b>→</b>Files</a>
+      <a href="#homework"><b>→</b>Practice</a>
     </nav>
   </section>
 
-  <!-- WS1 -->
-  <section class="section" id="ws1">
+  <!-- INTRO -->
+  <section class="intro">
+    <div class="section-eyebrow"><span class="micro">Introduction</span></div>
+    <h2 class="section-title">How this kit works</h2>
+    <p>This is a practice kit, not a textbook. Every worksheet is a structured prompt, filled in with my own answers. The answers are the worked examples. When I redo a worksheet, I match this specificity and this honesty. I do not soften.</p>
+    <p>I write by hand first. The hand recruits a different memory pathway than typing. What surfaces on paper does not surface on screen. Then the writing goes to AI for pattern recognition and synthesis. The pen is for excavation. The AI is for seeing the pattern.</p>
+    <p>All the AI outputs live in the Claude project <strong>Easwar's Upleveling</strong>. Every new conversation there starts with my profile, my targets and my rules. That is the system.</p>
+  </section>
+
+  <!-- WORKSHEET 1 -->
+  <section class="section" id="worksheet-1">
     <div class="ws-head">
       <div class="ws-num">01</div>
       <div><div class="ws-label">The Excavation</div><div class="ws-title">The Tolerance Inventory</div></div>
     </div>
-    <p class="ws-purpose">Five things I have learned to live around. What each one costs. The story I tell myself about it. The italic line under each is the pattern in the margin.</p>
+    <p class="ws-purpose">Five things I have been tolerating. The cost of tolerating each one. The story I tell myself about it. Not the loud crisis. The dull persistent dissatisfaction.</p>
     <div class="t3">
       <div class="row header">
         <div><span class="col-label">The Tolerance</span></div>
@@ -151,13 +197,13 @@
         <div><span class="col-label">The Story I Tell Myself</span></div>
       </div>
       <div class="row">
-        <div data-l="The tolerance"><span class="ex-tag">01 · The job</span><div class="cell">Three years at Fusion, the first company that came through placements after Zoho. Managers who pass the pressure from above down onto me. Now on a PIP.</div></div>
-        <div data-l="The cost"><div class="cell">Most of my time and energy. Reopened tasks on my name. A job that pays my EMIs is now at risk because I took it for granted.</div></div>
+        <div data-l="The tolerance"><span class="ex-tag">01 · The job</span><div class="cell">Three years at Fusion, the first company that came through placements after Zoho let me go following my bike accident. Managers who pass the pressure from above down onto me. Now on a PIP.</div></div>
+        <div data-l="The cost"><div class="cell">Most of my time and energy. Tasks reopened on my name. The one job paying my EMIs is now at risk because I took it for granted.</div></div>
         <div data-l="The story"><div class="cell">"It's fine, it's stable. I'll switch when I've built something of my own."<span class="note">taking security for granted</span></div></div>
       </div>
       <div class="row">
-        <div data-l="The tolerance"><span class="ex-tag">02 · The EMIs</span><div class="cell">₹59,641 every month. More than half my salary. ₹12,56,285 still owed, mostly on tech and lifestyle.</div></div>
-        <div data-l="The cost"><div class="cell">I live on about ₹37,700. Every other change waits behind the debt. I can't take a risk on my own business.</div></div>
+        <div data-l="The tolerance"><span class="ex-tag">02 · The EMIs</span><div class="cell">₹59,641 every month. More than half my salary. ₹12,56,285 still owed, mostly on tech and lifestyle I bought on impulse.</div></div>
+        <div data-l="The cost"><div class="cell">I live on about ₹37,700. Every other change waits behind the debt. I cannot take a single risk on my own business.</div></div>
         <div data-l="The story"><div class="cell">"I'll fix everything once the money is flowing more."<span class="note">buying the feeling of having made it</span></div></div>
       </div>
       <div class="row">
@@ -166,72 +212,90 @@
         <div data-l="The story"><div class="cell">"He's a friend. It'll work out. This is my way into building something."<span class="note">working before the deal is closed</span></div></div>
       </div>
       <div class="row">
-        <div data-l="The tolerance"><span class="ex-tag">04 · Late nights</span><div class="cell">Partying, drinking, staying up late. Saying yes to friends who drain my energy and money. Waking up at 10 or 11.</div></div>
+        <div data-l="The tolerance"><span class="ex-tag">04 · Late nights</span><div class="cell">Partying, drinking, smoking, staying up late. Saying yes to friends who drain my energy and money. Waking at 10 or 11.</div></div>
         <div data-l="The cost"><div class="cell">The morning workouts I would otherwise do. A body I don't feel confident in. Money that should be going to the debt.</div></div>
         <div data-l="The story"><div class="cell">"I'm 25, this is when I should enjoy it. If I say no, I'll lose them."<span class="note">fear of being left out</span></div></div>
       </div>
       <div class="row">
-        <div data-l="The tolerance"><span class="ex-tag">05 · Avadi</span><div class="cell">Living with my parents and their rules in Avadi. Everything I want, friends, cafes, opportunities, is at least 40 minutes away. Carb-heavy vegetarian food at home.</div></div>
+        <div data-l="The tolerance"><span class="ex-tag">05 · Avadi</span><div class="cell">Living with my parents and their rules in Avadi. Everything I want, friends, cafes, opportunities, is at least a 40 minute drive away. Carb-heavy vegetarian food at home.</div></div>
         <div data-l="The cost"><div class="cell">Hours a week in travel. A diet that works against the abs I want. Rooms and people I never get to walk into.</div></div>
         <div data-l="The story"><div class="cell">"Housing and food are taken care of. I'll move once the debt is gone."<span class="note">waiting for money to give permission</span></div></div>
       </div>
     </div>
     <div class="pull">Every story ends the same way.<br>"When the money is flowing."</div>
+    <div class="instruction">
+      <span class="i-label">Instruction</span>
+      <p>In the notebook, do not draw the table. The columns on screen are for reading. On paper they become a cage that limits each entry to three or four words. Write the three labels (Tolerance, Cost, Story) as section headers at the top of a fresh page. Underneath each, write flowing prose. Use the right-hand margin for short meta-annotations as patterns occur. The example below shows the layout.</p>
+      <p>A tolerance is not a tragedy. It is the dull persistent thing I have learned to live around. The real cost is not how it makes me feel. It is the compounding loss of capacity, time, energy, money or possibility. Name it that way.</p>
+      <p>The Story section is the lie. Quote myself as if I am hearing myself say it out loud. Do not paraphrase.</p>
+      <span class="notebook-cue">→ Five tolerances, three sections each. 25-30 minutes.</span>
+    </div>
+    <figure class="ws-example">
+      <img src="example.jpg" alt="Handwritten Worksheet 1 example showing column labels as headers, prose underneath, and short margin annotations">
+      <figcaption>Example layout · Worksheet 1 on paper</figcaption>
+    </figure>
   </section>
 
-  <!-- WS2 -->
-  <section class="section" id="ws2">
+  <!-- WORKSHEET 2 -->
+  <section class="section" id="worksheet-2">
     <div class="ws-head">
       <div class="ws-num">02</div>
       <div><div class="ws-label">The Excavation · Anti-Vision</div><div class="ws-title">The Real Five-Year Trajectory</div></div>
     </div>
-    <p class="ws-purpose">If nothing changes, Easwar at 30. Not catastrophic. Just the most likely version given the current decisions.</p>
+    <p class="ws-purpose">If nothing changes for the next five years, the realistic version of where I end up at 30. Not dramatic. Not catastrophic. The most likely version given the current trajectory of my decisions.</p>
     <div class="t2">
       <div class="row header">
         <div><span class="col-label">Variable</span></div>
-        <div><span class="col-label">Now · 25</span></div>
-        <div><span class="col-label">At 30 · same path</span></div>
+        <div><span class="col-label">Where it is now</span></div>
+        <div><span class="col-label">Where it will be in 5 years</span></div>
       </div>
       <div class="row">
         <div><span class="row-key">Where the money comes from</span></div>
         <div class="cell" data-l="Now">Fusion only. ₹97,300. Kasi was a one-off ₹40k.</div>
-        <div class="cell" data-l="At 30">If the PIP goes wrong, maybe not even Fusion. Another Oracle job taken out of panic. Consulting still "when I get clients."</div>
+        <div class="cell" data-l="In 5 years">If the PIP goes wrong, maybe not even Fusion. Another Oracle job taken out of panic. Consulting still "when I get clients."</div>
       </div>
       <div class="row">
         <div><span class="row-key">How consistent the money is</span></div>
         <div class="cell" data-l="Now">Stable salary, but 61% gone to EMIs before the month starts.</div>
-        <div class="cell" data-l="At 30">This debt clears around mid-2028. The impulse buying opens new EMIs. The salary is stable and still spoken for.</div>
+        <div class="cell" data-l="In 5 years">This debt clears around mid-2028. The impulse buying opens new EMIs. The salary is stable and still spoken for.</div>
       </div>
       <div class="row">
         <div><span class="row-key">The work I actually do</span></div>
         <div class="cell" data-l="Now">VBCS on GrantsNow. Scarbloodtail content in spare hours.</div>
-        <div class="cell" data-l="At 30">Senior VBCS work. Scarbloodtail still small because it only ever got leftover hours.</div>
+        <div class="cell" data-l="In 5 years">Senior VBCS work. Scarbloodtail still small because it only ever got leftover hours.</div>
       </div>
       <div class="row">
         <div><span class="row-key">My relationship with the work</span></div>
         <div class="cell" data-l="Now">I like it, except when managers lash out over small things. Heavier than it used to be.</div>
-        <div class="cell" data-l="At 30">The pressure stops registering. It becomes how work feels.</div>
+        <div class="cell" data-l="In 5 years">The pressure stops registering. It becomes how work feels.</div>
       </div>
       <div class="row">
         <div><span class="row-key">The people around me</span></div>
         <div class="cell" data-l="Now">Family, the same friends, Kasi.</div>
-        <div class="cell" data-l="At 30">The same people. Mom still commuting to TIDCO. Still saying yes to plans I don't want.</div>
+        <div class="cell" data-l="In 5 years">The same people. Mom still commuting to TIDCO. Still saying yes to plans I don't want.</div>
       </div>
       <div class="row">
         <div><span class="row-key">My body at 10 PM</span></div>
         <div class="cell" data-l="Now">Out late or awake late. Body heated up, can't sleep. Unhappy with how I look.</div>
-        <div class="cell" data-l="At 30">Five years of "I'll start the routine Monday." The fat kid's belief confirmed, not changed.</div>
+        <div class="cell" data-l="In 5 years">Five years of "I'll start the routine Monday." The fat kid's belief confirmed, not changed.</div>
       </div>
+    </div>
+    <div class="pull">Not negative for the sake of it.<br>Honest about the trajectory.</div>
+    <div class="instruction">
+      <span class="i-label">Instruction</span>
+      <p>In the notebook, six rows. Variables on the left: where the money comes from, how consistent the money is, the work I actually do, my relationship with the work, the people around me, my body at 10 PM. Two columns to the right: now, in 5 years.</p>
+      <p>The point is not to manufacture dissatisfaction. The point is to see clearly. Some of it will feel like grief. Some of it like relief. Both are data.</p>
+      <span class="notebook-cue">→ Six variables, two columns. 20-25 minutes.</span>
     </div>
   </section>
 
-  <!-- WS3 -->
-  <section class="section" id="ws3">
+  <!-- WORKSHEET 3 -->
+  <section class="section" id="worksheet-3">
     <div class="ws-head">
       <div class="ws-num">03</div>
       <div><div class="ws-label">The Excavation</div><div class="ws-title">The Embarrassment Audit</div></div>
     </div>
-    <p class="ws-purpose">Not the reasonable reason. The one that makes me sound scared or weak. Then the nicer label I've been giving it.</p>
+    <p class="ws-purpose">The most embarrassing reason I have not changed yet, across my life domains. Not the reasonable reason. The one that makes me sound weak, scared, or lazy rather than busy or strategic. The honest one.</p>
     <div class="para-block">
       <div class="para">
         <span class="ex-tag">Work and career</span>
@@ -246,132 +310,266 @@
         <p>The most embarrassing reason I don't have the body I want is that I've become lazy and unserious about it. Smoking, drinking and partying on repeat. Underneath, the fat kid still believes this is just how I'm built.<span class="turn">I've been calling it enjoying my twenties. It's choosing tonight's relief over the body I keep saying I want.</span></p>
       </div>
       <div class="para">
-        <span class="ex-tag">Relationships</span>
+        <span class="ex-tag">Relationships and environment</span>
         <p>The most embarrassing reason I keep saying yes to the friends who drain me, and kept saying yes to Kasi, is that I'm scared I'll lose them if I say no.<span class="turn">I've been calling it loyalty. It's fear of being left out, and it's why Kasi got my work without paying for it.</span></p>
       </div>
     </div>
-    <div class="pull">Read it aloud. Three times.<br>Performative, uncomfortable, true.</div>
-
+    <div class="pull">Read it aloud.<br>Three times.</div>
+    <div class="instruction">
+      <span class="i-label">Instruction</span>
+      <p>In the notebook, one paragraph per domain. Three to five sentences each. Each opens with "The most embarrassing reason I'm ___ is because…" and ends by naming the nicer label I have been giving it. Specific. Harsh. Not exonerating.</p>
+      <p>Read each paragraph aloud three times when done. The first time will feel performative. The second time uncomfortable. The third time like the truth.</p>
+      <p>When done, Worksheets 1, 2 and 3 go through the Pattern Extractor.</p>
+      <span class="notebook-cue">→ Four paragraphs, 3 to 5 sentences each. Read aloud three times. 20-25 minutes.</span>
+    </div>
     <div class="loop">
-      <span class="i-label">The pattern underneath</span>
+      <span class="i-label">What the Pattern Extractor found</span>
       <div class="loop-chain">
         <span>Impulse buying</span><i>→</i><span>Debt</span><i>→</i><span>Stuck at Fusion</span><i>→</i><span>Mom keeps working</span><i>→</i><span>Stress, late nights</span><i>→</i><span>Impulse buying</span>
       </div>
-      <p>The loop starts and ends with money. That is why getting debt-free sits at the centre of everything else. Break the buying, and the debt clears. Clear the debt, and every other change stops waiting.</p>
+      <p>The loop starts and ends with money. Break the buying and the debt clears. Clear the debt and every other change stops waiting.</p>
     </div>
   </section>
 
-  <!-- WS4 -->
-  <section class="section" id="ws4">
+  <!-- WORKSHEET 4 -->
+  <section class="section" id="worksheet-4">
     <div class="ws-head">
       <div class="ws-num">04</div>
       <div><div class="ws-label">The Direction</div><div class="ws-title">The Vision Map</div></div>
     </div>
-    <p class="ws-purpose">October 2029. Easwar at 28. Written like a photograph.</p>
-    <div class="t2 single">
+    <p class="ws-purpose">Three years from now, October 2029, on the path I actually want. Same variables as Worksheet 2, from the wanted side, plus the visual ones that feed the Vision Board. Written like a photograph.</p>
+    <div class="t2">
       <div class="row header">
         <div><span class="col-label">Variable</span></div>
+        <div><span class="col-label">Now</span></div>
         <div><span class="col-label">In 3 years</span></div>
       </div>
-      <div class="row"><div><span class="row-key">Where the money comes from</span></div><div class="cell" data-l="">Fusion is behind me. I run my own agency providing AI consulting. Multiple clients with clear deliverables. I work how I want, from where I want.</div></div>
-      <div class="row"><div><span class="row-key">How consistent (MRR / QRR)</span></div><div class="cell" data-l="">₹10L a month in recurring revenue. ₹30L a quarter. I know the floor before the month starts.</div></div>
-      <div class="row"><div><span class="row-key">How much and by when</span></div><div class="cell" data-l=""><strong>Oct 2027:</strong> debt-free, earning ₹3L a month.<br><strong>Oct 2029:</strong> ₹10L a month. Deals of $10k each.</div></div>
-      <div class="row"><div><span class="row-key">A normal Tuesday</span></div><div class="cell" data-l="">Up at 6. Brush, meditate, gym. Work through the day, eight hours or more if it needs it, then sign off. Peace and flexibility above everything.</div></div>
-      <div class="row"><div><span class="row-key">My relationship with the work</span></div><div class="cell" data-l="">I answer to my clients and no one else. My own team works under and with me, people and AI agents.</div></div>
-      <div class="row"><div><span class="row-key">Mom and family</span></div><div class="cell" data-l="">Mom is retired. She has lost weight and she is healthy. She is at home, not worrying about money, because I take care of it.</div></div>
-      <div class="row"><div><span class="row-key">Where I live</span></div><div class="cell" data-l="">Not Avadi, not with my parents. My own rented place in the heart of the city, or with roommates. Or working remotely from cities I want to explore.</div></div>
-      <div class="row"><div><span class="row-key">The people around me</span></div><div class="cell" data-l="">Low-maintenance friends. Powerful people in different rooms that I walk into, each one a door to an opportunity. A partner if it happens.</div></div>
-      <div class="row"><div><span class="row-key">Body at 10 PM</span></div><div class="cell" data-l="">Fast asleep. Abs. Drinking only on occasions that call for it, maybe not at all. Smoking on a limit I set and keep.</div></div>
-      <div class="row"><div><span class="row-key">Trips and experiences</span></div><div class="cell" data-l="">A nomad when I'm not working. Not one place, many. Well travelled, because that's how I grow as a person.</div></div>
+      <div class="row">
+        <div><span class="row-key">Where the money comes from</span></div>
+        <div class="cell" data-l="Now">Fusion only. Kasi stopped paying.</div>
+        <div class="cell" data-l="In 3 years">Fusion is behind me. I run my own AI consulting agency. Multiple clients with clear deliverables. I work how I want, from where I want.</div>
+      </div>
+      <div class="row">
+        <div><span class="row-key">How consistent (MRR / QRR)</span></div>
+        <div class="cell" data-l="Now">Stable salary, 61% gone to EMIs.</div>
+        <div class="cell" data-l="In 3 years">₹10L a month recurring. ₹30L a quarter. I know the floor before the month starts.</div>
+      </div>
+      <div class="row">
+        <div><span class="row-key">How much and by when</span></div>
+        <div class="cell" data-l="Now">₹97,300 a month. ₹12.56L owed.</div>
+        <div class="cell" data-l="In 3 years"><strong>Oct 2027:</strong> debt-free, ₹3L a month.<br><strong>Oct 2029:</strong> ₹10L a month. $10k deals.</div>
+      </div>
+      <div class="row">
+        <div><span class="row-key">The work I do</span></div>
+        <div class="cell" data-l="Now">Up at 10 or 11. VBCS through the day. Late nights.</div>
+        <div class="cell" data-l="In 3 years">Up at 6. Brush, meditate, gym. Work through the day, eight hours or more if it needs it, then sign off. Peace and flexibility above everything.</div>
+      </div>
+      <div class="row">
+        <div><span class="row-key">My relationship with the work</span></div>
+        <div class="cell" data-l="Now">Managers pass pressure down. On a PIP.</div>
+        <div class="cell" data-l="In 3 years">I answer to my clients and no one else. My own team works under and with me, people and AI agents.</div>
+      </div>
+      <div class="row">
+        <div><span class="row-key">Mom and family</span></div>
+        <div class="cell" data-l="Now">Mom works at TIDCO. The job and the commute take most of her energy.</div>
+        <div class="cell" data-l="In 3 years">Mom is retired. She has lost weight and she is healthy. She is at home, not worrying about money, because I take care of it.</div>
+      </div>
+      <div class="row">
+        <div><span class="row-key">The space I live in</span></div>
+        <div class="cell" data-l="Now">Avadi, with my parents and their rules. 40 minutes from everything.</div>
+        <div class="cell" data-l="In 3 years">My own rented place in the heart of the city, or with roommates. Or working remotely from cities I want to explore.</div>
+      </div>
+      <div class="row">
+        <div><span class="row-key">The people I am with</span></div>
+        <div class="cell" data-l="Now">The same friends, some who drain me. Kasi.</div>
+        <div class="cell" data-l="In 3 years">Low-maintenance friends. Powerful people in different rooms that I walk into, each one a door to an opportunity. A partner if it happens.</div>
+      </div>
+      <div class="row">
+        <div><span class="row-key">My body at 10 PM</span></div>
+        <div class="cell" data-l="Now">Awake, body heated up. Smoking and drinking on repeat.</div>
+        <div class="cell" data-l="In 3 years">Fast asleep. Abs. Drinking only on occasions that call for it, maybe not at all. Smoking on a limit I set and keep.</div>
+      </div>
+      <div class="row">
+        <div><span class="row-key">Trips and experiences</span></div>
+        <div class="cell" data-l="Now">Free time goes to nights out.</div>
+        <div class="cell" data-l="In 3 years">A nomad when I'm not working. Not one place, many. Well travelled, because that is how I grow as a person.</div>
+      </div>
     </div>
     <div class="pull">Specific is gravity.<br>Vague vision does not pull.</div>
+    <div class="instruction">
+      <span class="i-label">Instruction</span>
+      <p>In the notebook, every variable, two columns: now, in 3 years. Write the 3-year column like a screenplay. Concrete objects, concrete people, concrete locations.</p>
+      <p>This worksheet is the input for the Vision Board. "A nice flat" generates a generic flat. "A minimal rented flat in central Chennai, wooden desk by a window over the rooftops at sunrise" generates mine.</p>
+      <p>If something feels too ambitious, write it anyway. The point is not to be realistic. The point is to give the cybernetic mind a target.</p>
+      <span class="notebook-cue">→ Ten variables, two columns. 25-30 minutes.</span>
+    </div>
   </section>
 
-  <!-- WS5 -->
-  <section class="section" id="ws5">
+  <!-- WORKSHEET 5 -->
+  <section class="section" id="worksheet-5">
     <div class="ws-head">
       <div class="ws-num">05</div>
       <div><div class="ws-label">The Direction</div><div class="ws-title">The Identity Statement</div></div>
     </div>
-    <p class="ws-purpose">Read aloud every morning. Present tense. Not who I'm trying to become. Who I am.</p>
+    <p class="ws-purpose">The single paragraph that names the operator I am becoming. Then five sub-prompts that make it concrete. Identity precedes behaviour. Name the identity precisely and behaviour follows.</p>
     <div class="identity">
       <p>I am the type of person who never negotiates with his morning workout and meditation, because that is how I get into the right headspace. I have mastered communication with clients, friends and family. I eat clean, even when I eat out, and I choose sleep over going out. I close $10k deals. And I am not wasting what I was given: 6'5", good genes, the potential to model, held back only by habits I am now replacing.</p>
     </div>
-    <div class="t2 single">
+    <div class="t2">
       <div class="row header">
         <div><span class="col-label">Sub-prompt</span></div>
         <div><span class="col-label">I am the type of person who…</span></div>
+        <div><span class="col-label">It replaces</span></div>
       </div>
-      <div class="row"><div><span class="row-key">Mornings</span></div><div class="cell" data-l="">wakes at 6, meditates, and trains before the workday starts, without negotiating with himself.</div></div>
-      <div class="row"><div><span class="row-key">Money</span></div><div class="cell" data-l="">has a solid emergency fund and a ₹50 lakh portfolio in mutual funds and other assets.</div></div>
-      <div class="row"><div><span class="row-key">Decisions</span></div><div class="cell" data-l="">starts work only after the deal is closed and money is committed.</div></div>
-      <div class="row"><div><span class="row-key">Relationships</span></div><div class="cell" data-l="">says no easily to friends when the plan is a waste of time.</div></div>
-      <div class="row"><div><span class="row-key">What I refuse</span></div><div class="cell" data-l="">refuses to stay the same and waste his potential. Becomes magnetic and charismatic, someone people are drawn to.</div></div>
+      <div class="row">
+        <div><span class="row-key">Mornings</span></div>
+        <div class="cell" data-l="I am the type of person who">wakes at 6, meditates, and trains before the workday starts, without negotiating with himself.</div>
+        <div class="cell" data-l="It replaces">Waking at 10 or 11 and skipping the gym.</div>
+      </div>
+      <div class="row">
+        <div><span class="row-key">Money</span></div>
+        <div class="cell" data-l="I am the type of person who">has a solid emergency fund and a ₹50 lakh portfolio in mutual funds and other assets.</div>
+        <div class="cell" data-l="It replaces">₹12.5L of impulse EMIs and ₹1.5L in savings.</div>
+      </div>
+      <div class="row">
+        <div><span class="row-key">Decisions</span></div>
+        <div class="cell" data-l="I am the type of person who">starts work only after the deal is closed and money is committed.</div>
+        <div class="cell" data-l="It replaces">Working for Kasi on trust.</div>
+      </div>
+      <div class="row">
+        <div><span class="row-key">Relationships</span></div>
+        <div class="cell" data-l="I am the type of person who">says no easily to friends when the plan is a waste of time.</div>
+        <div class="cell" data-l="It replaces">Saying yes out of fear of losing them.</div>
+      </div>
+      <div class="row">
+        <div><span class="row-key">What I refuse</span></div>
+        <div class="cell" data-l="I am the type of person who">refuses to stay the same and waste his potential. Becomes magnetic and charismatic, someone people are drawn to.</div>
+        <div class="cell" data-l="It replaces">The fat kid's belief that this is how I'm built.</div>
+      </div>
+    </div>
+    <div class="instruction">
+      <span class="i-label">Instruction</span>
+      <p>In the notebook, the full identity statement first. One paragraph, three to five sentences, beginning with "I am the type of person who…" Present tense. Not who I am trying to become. Who I am.</p>
+      <p>Then five sub-prompts, one line each: mornings, money, decisions, relationships, what I refuse. These are the operating layer of the identity. What gets read aloud every morning.</p>
+      <span class="notebook-cue">→ One paragraph plus five sub-lines. 15-20 minutes.</span>
     </div>
   </section>
 
-  <!-- WS6 -->
-  <section class="section" id="ws6">
+  <!-- WORKSHEET 6 -->
+  <section class="section" id="worksheet-6">
     <div class="ws-head">
       <div class="ws-num">06</div>
       <div><div class="ws-label">The Direction</div><div class="ws-title">The Environment Audit</div></div>
     </div>
-    <p class="ws-purpose">An unorganized environment is the consequence of an unorganized mind. Not a wishlist. Every line happens this week.</p>
-    <div class="t3">
+    <p class="ws-purpose">What surrounds me becomes me. An unorganized environment is the consequence of an unorganized mind. Four layers. Two columns: remove, add. The anti-vision tells me what to remove. The vision tells me what to add.</p>
+    <div class="t4">
       <div class="row header">
         <div><span class="col-label">Layer</span></div>
         <div><span class="col-label">Remove</span></div>
         <div><span class="col-label">Add</span></div>
+        <div><span class="col-label">First action</span></div>
       </div>
       <div class="row">
-        <div data-l="Layer"><span class="row-key">Physical</span></div>
-        <div data-l="Remove"><div class="cell">Any cigarettes beyond today's five. The phone on the bed at night. Coffee after 1 PM.</div></div>
-        <div data-l="Add"><div class="cell">Only five cigarettes in my pocket each morning. Phone charging away from the bed. Gym clothes laid out the night before. A big steel water bottle that comes everywhere, including the car.</div></div>
+        <div><span class="row-key">Physical</span></div>
+        <div class="cell" data-l="Remove">Any cigarettes beyond today's five. The phone on the bed at night. Coffee after 1 PM.</div>
+        <div class="cell" data-l="Add">Only five cigarettes in my pocket each morning. Phone charging away from the bed. Gym clothes laid out the night before. A big steel water bottle that goes everywhere, including the car.</div>
+        <div class="cell" data-l="First action">Tonight: move the charger away from the bed and lay out tomorrow's gym clothes.</div>
       </div>
       <div class="row">
-        <div data-l="Layer"><span class="row-key">Digital</span></div>
-        <div data-l="Remove"><div class="cell">Saved cards and "No-cost EMI" on Amazon and Flipkart. Shopping apps off the home screen. Instagram and YouTube in the first hour after waking and the last hour before bed.</div></div>
-        <div data-l="Add"><div class="cell">A headset with mic and a quiet corner for every Fusion call. A wishlist with a 48-hour rule instead of the buy button. A debt tracker updated every payday. Daily limits on Instagram and YouTube.</div></div>
+        <div><span class="row-key">Digital</span></div>
+        <div class="cell" data-l="Remove">Saved cards and "No-cost EMI" on Amazon and Flipkart. Shopping apps off the home screen. Instagram and YouTube in the first and last hour of the day.</div>
+        <div class="cell" data-l="Add">A headset with mic and a quiet corner for every Fusion call. A wishlist with a 48-hour rule instead of the buy button. A debt tracker updated every payday. Daily limits on Instagram and YouTube.</div>
+        <div class="cell" data-l="First action">Today: delete the saved cards from both shopping apps.</div>
       </div>
       <div class="row">
-        <div data-l="Layer"><span class="row-key">Input</span></div>
-        <div data-l="Remove"><div class="cell">Work for Kasi until there's a written agreement and payment upfront. Weeknight plans with the friends who drain me. Reels as default rest.</div></div>
-        <div data-l="Add"><div class="cell">One person a month who is already doing AI consulting, someone I meet, message or study. A fixed weekly slot for Scarbloodtail. Long-form YouTube that teaches the agency business.</div></div>
+        <div><span class="row-key">Input</span></div>
+        <div class="cell" data-l="Remove">Work for Kasi until there's a written agreement and payment upfront. Weeknight plans with the friends who drain me. Reels as default rest.</div>
+        <div class="cell" data-l="Add">One person a month already doing AI consulting, someone I meet, message or study. A fixed weekly slot for Scarbloodtail. Long-form YouTube that teaches the agency business.</div>
+        <div class="cell" data-l="First action">This week: tell Kasi no more work without written scope and upfront payment.</div>
       </div>
       <div class="row">
-        <div data-l="Layer"><span class="row-key">Food + body</span></div>
-        <div data-l="Remove"><div class="cell">Drinking on regular nights. Late nights out on workdays. Plates that are mostly rice or roti with little protein.</div></div>
-        <div data-l="Add"><div class="cell">Protein at every meal: more dal, paneer, curd at home, and eggs or non-veg when eating out. The daily protein shake. Water through the day, not just at night. A cool shower before bed to bring the heat down.</div></div>
+        <div><span class="row-key">Food + body</span></div>
+        <div class="cell" data-l="Remove">Drinking on regular nights. Late nights out on workdays. Plates that are mostly rice or roti with little protein.</div>
+        <div class="cell" data-l="Add">Protein at every meal: more dal, paneer, curd at home, eggs or non-veg outside. The daily protein shake. Water through the day, not just at night. A cool shower before bed to bring the heat down.</div>
+        <div class="cell" data-l="First action">Tomorrow: last coffee before 1 PM, and the alarm 30 minutes earlier.</div>
       </div>
     </div>
-
     <div class="instruction">
-      <span class="i-label">The wake-up shift · 10:30 AM to 6 AM</span>
-      <p>Don't jump straight to 6. Move the alarm 30 minutes earlier every three days, and go to bed 30 minutes earlier with it. Last coffee before 1 PM. In about four weeks, 6 AM stops being a fight.</p>
+      <span class="i-label">Instruction</span>
+      <p>In the notebook, four rows: physical, digital, input, food and body. Remove and add under each. Be specific. "Clean my room" is not a removal. "The charger next to my pillow, moved to the desk tonight" is.</p>
+      <p>This is not a wishlist. These are actions completed by <strong>Sunday 25 October 2026</strong>. If it is on the list, it happens.</p>
+      <p><strong>The wake-up shift.</strong> Don't jump straight from 10:30 to 6. Move the alarm 30 minutes earlier every three days, and go to bed 30 minutes earlier with it. In about four weeks, 6 AM stops being a fight.</p>
+      <span class="notebook-cue">→ Four rows, two columns each. 20-25 minutes. Action-specific.</span>
     </div>
   </section>
 
-  <!-- MILESTONES -->
-  <section class="section" id="milestones">
-    <div class="micro" style="margin-bottom:16px;">The Path</div>
-    <h2 class="section-title">From here to there</h2>
-    <div class="milestones">
-      <div class="ms"><div class="ms-date">Dec 2026</div><div><div class="ms-head">Clear the PIP</div><p>First lever, ahead of everything else. It protects the ₹59,641 a month and buys the time to build properly. Quiet calls, no reopened tasks.</p></div></div>
-      <div class="ms"><div class="ms-date">Early 2027</div><div><div class="ms-head">First paid consulting, ₹50k a month</div><p>To be debt-free in 12 months, about ₹45k extra a month has to go to prepayment on top of the EMIs. Scope and payment in writing before any work starts.</p></div></div>
-      <div class="ms"><div class="ms-date">Oct 2027</div><div><div class="ms-head">Debt-free · ₹3L a month</div><p>₹12,56,285 cleared. Emergency fund begins. The question of leaving Fusion becomes a real one.</p></div></div>
-      <div class="ms"><div class="ms-date">Oct 2029</div><div><div class="ms-head">The agency · ₹10L a month</div><p>Own team of people and AI agents. Mom retired. Living in the city or on the move. $10k deals.</p></div></div>
+  <!-- PIPELINE -->
+  <section class="section" id="pipeline">
+    <div class="section-eyebrow"><span class="micro">Reference</span></div>
+    <h2 class="section-title">The full pipeline</h2>
+    <p>The closed loop. Every handwritten worksheet is photographed, transcribed, processed through an AI prompt, and ends in the deployed Vision Card. Every output lives in the Easwar's Upleveling project.</p>
+    <div class="pipe">
+      <div class="pipe-row"><p><strong>The Excavation.</strong> Worksheets 1, 2, 3 → photograph → transcribe → Pattern Extractor → <code>easwar_pattern-extraction.md</code></p><span class="status">Done</span></div>
+      <div class="pipe-row"><p><strong>The Direction.</strong> Worksheets 4, 5 → transcribe → Vision Sharpener → Vision Sentence, Identity Sentence, 5-word mantra → <code>easwar_vision-sentence.md</code></p><span class="status">Done</span></div>
+      <div class="pipe-row"><p><strong>Worksheet 6.</strong> Environment audit applied directly. Not processed through AI. Done by Sunday 25 October.</p><span class="status next">This week</span></div>
+      <div class="pipe-row"><p><strong>Freedom Math.</strong> Conversational Q&amp;A → lighthouse number with a WHY for every line, about ₹3.7L a month → <code>easwar_freedom-math.csv</code></p><span class="status">Done</span></div>
+      <div class="pipe-row"><p><strong>Quit-Your-Job Math.</strong> Do I actually need the job, and how do I make it sustainable while I build → exit floor of ₹2L a month and five conditions → <code>easwar_quit-job-math.csv</code></p><span class="status">Done</span></div>
+      <div class="pipe-row"><p><strong>Vision Card v1.</strong> All outputs → HTML → deployed to Vercel → <code>easwar_vision-card-url.txt</code></p><span class="status">Live</span></div>
+      <div class="pipe-row"><p><strong>Vision Board.</strong> Vision Sentence + Vision Map → 5 image prompts → generate in Higgsfield → <code>easwar_vision-board-0N-[type].jpg</code> → Vision Card v2 with images</p><span class="status next">Next</span></div>
     </div>
+  </section>
 
-    <div class="daily">
-      <div><h4>Every morning · 15 min</h4><p>Brain dump in the notebook. Read the identity statement aloud. Glance at the path.</p></div>
-      <div><h4>Every evening · 5 min</h4><p>One line. Did I move toward the agency life today, or back toward the loop?</p></div>
-      <div><h4>Every payday</h4><p>Update the debt tracker. Prepay whatever the consulting brought in.</p></div>
-      <div><h4>Every Sunday · 30 min</h4><p>Count the week: cigarettes, gym days, wake-up times, money in. Adjust one thing.</p></div>
+  <!-- NAMING -->
+  <section class="appendix" id="naming">
+    <div class="appendix-head">
+      <div class="a-label">Appendix · Reference</div>
+      <h2>File naming convention</h2>
     </div>
+    <p>One rule: <code>easwar_[output-name].[ext]</code>. Same names every time, so every output is easy to find and replace.</p>
+    <div class="naming-block">
+      <span class="col-label" style="margin-bottom:12px; display:block;">The seven outputs</span>
+      <code>easwar_pattern-extraction.md</code>
+      <code>easwar_vision-sentence.md</code>
+      <code>easwar_freedom-math.csv</code>
+      <code>easwar_quit-job-math.csv</code>
+      <code>easwar_vision-board-prompts.md</code>
+      <code>easwar_vision-card-url.txt</code>
+      <code>easwar_profile.md</code>
+      <p style="margin-top:24px;"><strong>The five vision board images</strong></p>
+      <code>easwar_vision-board-01-space.jpg</code>
+      <code>easwar_vision-board-02-people.jpg</code>
+      <code>easwar_vision-board-03-business.jpg</code>
+      <code>easwar_vision-board-04-trips.jpg</code>
+      <code>easwar_vision-board-05-future-self.jpg</code>
+      <p style="margin-top:24px;"><strong>Daily practice (kept in the notebook)</strong></p>
+      <code>easwar_brain-dump-week-N.md</code>
+      <code>easwar_worksheet-week-N.md</code>
+    </div>
+    <p style="margin-top:32px;">The handwritten worksheets stay private. They are not photographed and shared. Be fully honest in the writing, because no one else will see it. The AI outputs are the layer of sharing. The handwriting is the layer of truth.</p>
+  </section>
+
+  <!-- HOMEWORK -->
+  <section class="appendix" id="homework">
+    <div class="appendix-head">
+      <div class="a-label">Appendix · Practice</div>
+      <h2>The living homework</h2>
+    </div>
+    <p>The kit is not a one-time event. The worksheets are the entry point. The practice is the work. From today until the agency exists, three things.</p>
+    <p><strong>One. The daily brain dump.</strong> Ten to fifteen minutes every morning. No prompts, no rules. Hand on pen, paper takes whatever comes.</p>
+    <p><strong>Two. The weekly personalized worksheet.</strong> Every Sunday evening, in the Easwar's Upleveling project, build a custom worksheet for the question I'm sitting with that week, and review the week: cigarettes against five a day, gym days, wake-up times, money in, debt paid. Saved as <code>easwar_worksheet-week-N.md</code>.</p>
+    <p><strong>Three. The morning Vision Card glance.</strong> Thirty seconds. Open the Vision Card before Instagram. Read the identity statement aloud. Say the mantra: <em>Deal first. Debt free. Disciplined.</em></p>
+
+    <div class="milestones" style="margin-top:48px;">
+      <div class="ms"><div class="ms-date">Dec 2026</div><div><div class="ms-head">Clear the PIP</div><p>First lever, ahead of everything else. It protects the ₹59,641 a month and buys the time to build properly.</p></div></div>
+      <div class="ms"><div class="ms-date">Early 2027</div><div><div class="ms-head">₹50k a month consulting</div><p>About ₹45k extra prepaid on top of the EMIs every month. Scope and payment in writing before any work starts.</p></div></div>
+      <div class="ms"><div class="ms-date">Oct 2027</div><div><div class="ms-head">Debt-free · ₹3L a month</div><p>₹12,56,285 cleared. Emergency fund at ₹3L. Quit when ₹2L a month comes from outside the job for three months running.</p></div></div>
+      <div class="ms"><div class="ms-date">Oct 2029</div><div><div class="ms-head">The agency · ₹10L a month</div><p>Own team of people and AI agents. Mom retired. Living in the city or on the move.</p></div></div>
+    </div>
+    <p style="margin-top:32px;">Financial outcomes follow from the practice. The practice does not follow from financial outcomes.</p>
   </section>
 
   <section class="close">
-    <div class="micro" style="margin-bottom:40px;">The Frame to Hold</div>
+    <div class="close-mark">The Frame to Hold</div>
     <div class="close-lines">
       <p>Identity precedes behaviour. I become what I write myself into being.</p>
       <p>Environment shapes attention. What surrounds me shapes what I can think.</p>
@@ -380,8 +578,8 @@
   </section>
 
   <div class="footer">
-    <span>Easwar H · The Foundation</span>
-    <span>October 2026</span>
+    <span>Practice Kit · Volume I</span>
+    <span>Easwar's Upleveling · The Foundation</span>
   </div>
 
 </div>
